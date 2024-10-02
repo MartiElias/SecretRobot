@@ -28,10 +28,11 @@ class RandomLaserScanPublisher(Node):
         # ((angle_max - angle_min) / angle_increment) + 1 = points = 315
         # time_increment = scan_time / points
         scan_msg.time_increment = 0.1 / 315
+        # Total time for a full measure
         scan_msg.scan_time = 0.1
         scan_msg.range_min = 0.23
         scan_msg.range_max = 4.02
-        scan_msg.ranges = [random.uniform(0.25, 4.0) for _ in range(360)]
+        scan_msg.ranges = [random.uniform(0.25, 4.0) for _ in range(315)]
         scan_msg.ranges[179] = 0.23
         scan_msg.ranges[300] = 4.02
 
