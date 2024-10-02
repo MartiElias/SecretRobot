@@ -19,10 +19,15 @@ class RandomLaserScanPublisher(Node):
         scan_msg = LaserScan()
         scan_msg.header.stamp = self.get_clock().now().to_msg()
         scan_msg.header.frame_id = 'base_link'
+        # In radiant, aprox 180º
         scan_msg.angle_min = 0.0
         scan_msg.angle_max = 3.14
+        # Increment between measures
         scan_msg.angle_increment = 0.01
-        scan_msg.time_increment = 0.1
+        # Time between measures
+        # ((angle_max - angle_min) / angle_increment) + 1 = points = 315
+        # time_increment = scan_time / points
+        scan_msg.time_increment = 0.1 / 315
         scan_msg.scan_time = 0.1
         scan_msg.range_min = 0.23
         scan_msg.range_max = 4.02
