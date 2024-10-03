@@ -10,7 +10,7 @@ import random
 class RandomLaserScanPublisher(Node):
 
     def __init__(self):
-        super().__init__('PUB_SUB')
+        super().__init__('secret_node')
         self.publisher = self.create_publisher(LaserScan, 'laserscan', 10)
         self.timer = self.create_timer(1.0, self.publish_laserscan)
         
