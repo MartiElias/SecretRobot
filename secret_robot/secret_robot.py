@@ -14,7 +14,7 @@ class RandomLaserScanPublisher(Node):
         self.publisher = self.create_publisher(LaserScan, 'laserscan', 10)
         self.timer = self.create_timer(1.0, self.publish_laserscan)
         
-        self.subscription = self.create_subscription(Twist,'cmd_vel',self.listener_callback,10)
+        self.subscription = self.create_subscription(Twist,'cmdvel',self.listener_callback,10)
         print('Sist. Nav. --> Creating publishers and subscribers...')
 
         self.static_broadcaster = StaticTransformBroadcaster(self)
